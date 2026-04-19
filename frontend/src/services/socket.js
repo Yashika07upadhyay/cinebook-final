@@ -1,6 +1,6 @@
 import { io } from "socket.io-client";
 
-const SOCKET_URL = process.env.REACT_APP_API_URL;
+const SOCKET_URL = "https://cinebookfinal.onrender.com/";
 
 const socket = io(SOCKET_URL, {
   autoConnect: true,

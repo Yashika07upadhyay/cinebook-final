@@ -12,8 +12,12 @@ const COLS = 10;
 const TICKET_PRICE = 250;
 
 // Group seats by row
+// Line 16: Update this function
 const groupByRow = (seats) => {
   const map = {};
+  // Add a check: if seats isn't an array, return empty map immediately
+  if (!Array.isArray(seats)) return map;
+
   seats.forEach(seat => {
     const row = seat.seatNumber[0];
     if (!map[row]) map[row] = [];
@@ -33,8 +37,16 @@ const Home = () => {
     try {
       setFetchError(null);
       const res = await fetchSeats();
-      setSeats(res.data);
-    } catch {
+      // Ensure we only set seats if the response is actually an array
+      if (Array.isArray(res.data)) {
+        setSeats(res.data);
+      } else if (res.data && Array.isArray(res.data.seats)) {
+        // Handle case where array is nested inside an object
+        setSeats(res.data.seats);
+      } else {
+        setFetchError("Received invalid data format from server.");
+      }
+    } catch (err) {
       setFetchError("Failed to load seats. Check your connection.");
     } finally {
       setLoading(false);
@@ -67,7 +79,7 @@ const Home = () => {
   useEffect(() => {
     return () => {
       selected.forEach(seat => {
-        unlockSeat(seat._id).catch(() => {});
+        unlockSeat(seat._id).catch(() => { });
       });
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -79,7 +91,7 @@ const Home = () => {
     if (isCurrentlySelected) {
       // Deselect — unlock
       setSelected(prev => prev.filter(s => s._id !== seat._id));
-      try { await unlockSeat(seat._id); } catch {}
+      try { await unlockSeat(seat._id); } catch { }
       return;
     }
 

@@ -15,9 +15,8 @@ const server = http.createServer(app);
 // ─── Socket.io ──────────────────────────────────────────────
 const io = new Server(server, {
   cors: {
-    // This allows both your live site and your local testing
     origin: ["https://cineticket.vercel.app", "http://localhost:3000"],
-    methods: ["GET", "POST"],
+    methods: ['POST', 'GET', 'OPTIONS'],
     credentials: true
   }
 });

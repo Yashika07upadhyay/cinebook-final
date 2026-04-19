@@ -1,6 +1,6 @@
 import { io } from "socket.io-client";
 
-const SOCKET_URL = process.env.REACT_APP_API_URL || "http://localhost:5001";
+const SOCKET_URL = process.env.CLIENT_URL;
 
 const socket = io(SOCKET_URL, {
   autoConnect: true,

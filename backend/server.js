@@ -15,9 +15,11 @@ const server = http.createServer(app);
 // ─── Socket.io ──────────────────────────────────────────────
 const io = new Server(server, {
   cors: {
-    origin: process.env.CLIENT_URL || "http://localhost:3000",
+    // This allows both your live site and your local testing
+    origin: ["https://cineticket.vercel.app", "http://localhost:3000"],
     methods: ["GET", "POST"],
-  },
+    credentials: true
+  }
 });
 
 app.set("io", io);
@@ -31,7 +33,7 @@ io.on("connection", (socket) => {
 
 // ─── Middleware ──────────────────────────────────────────────
 app.use(cors({
-  origin: process.env.CLIENT_URL || "http://localhost:3000",
+  origin: ["https://cineticket.vercel.app", "http://localhost:3000"],
   credentials: true,
 }));
 

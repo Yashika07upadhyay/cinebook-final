@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { fetchSeats } from "../services/api";
 import api from "../services/api";
 import Navbar from "../components/Navbar";
 import "../styles/MyBookings.css";

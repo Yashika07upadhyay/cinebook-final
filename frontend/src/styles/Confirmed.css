@@ -1,0 +1,185 @@
+.confirmed-page {
+  min-height: 100vh;
+  background: radial-gradient(ellipse 80% 40% at 50% -5%, rgba(46,204,113,0.08), transparent 60%),
+              var(--bg);
+  display: flex;
+  flex-direction: column;
+}
+
+.confirmed-content {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 0 20px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.confirmed-content.show { opacity: 1; transform: translateY(0); }
+
+.confirmed-icon {
+  font-size: 64px;
+  margin-bottom: 16px;
+  animation: bounce 0.6s 0.3s ease both;
+}
+@keyframes bounce {
+  0%   { transform: scale(0.5); opacity: 0; }
+  70%  { transform: scale(1.15); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.confirmed-title {
+  font-size: 42px;
+  color: var(--green);
+  margin-bottom: 8px;
+}
+.confirmed-sub {
+  color: var(--text-2);
+  margin-bottom: 32px;
+  font-size: 15px;
+}
+
+/* TICKET CARD */
+.ticket-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  text-align: left;
+  box-shadow: var(--shadow-card);
+}
+
+.ticket-header {
+  padding: 24px 24px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, #12121a 0%, #1a1208 100%);
+}
+.ticket-movie {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  color: var(--text-1);
+  letter-spacing: 0.05em;
+}
+.ticket-meta {
+  font-size: 13px;
+  color: var(--text-2);
+  margin-top: 4px;
+}
+.ticket-poster {
+  font-size: 36px;
+  width: 56px; height: 56px;
+  background: var(--gold-dim);
+  border: 1px solid rgba(220,160,60,0.3);
+  border-radius: var(--radius-sm);
+  display: grid;
+  place-items: center;
+}
+
+/* Ticket tear line */
+.ticket-divider {
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: 24px;
+  background: var(--bg);
+}
+.ticket-notch {
+  width: 20px; height: 20px;
+  background: var(--bg);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.ticket-notch.left  { left: -10px; }
+.ticket-notch.right { right: -10px; }
+.ticket-dots {
+  flex: 1;
+  border-top: 2px dashed var(--border);
+  margin: 0 16px;
+}
+
+.ticket-body {
+  padding: 20px 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.ticket-label {
+  font-size: 10px;
+  color: var(--text-3);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 4px;
+}
+.ticket-value {
+  font-size: 13px;
+  color: var(--text-1);
+  font-weight: 500;
+}
+.ticket-value.mono { font-family: 'DM Mono', monospace; font-size: 12px; }
+.ticket-value.gold { color: var(--gold); font-size: 15px; font-weight: 700; }
+
+/* Barcode */
+.ticket-barcode {
+  padding: 16px 24px 20px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.barcode-lines {
+  display: flex;
+  align-items: flex-end;
+  gap: 1.5px;
+  height: 48px;
+}
+.barcode-line {
+  background: var(--text-1);
+  border-radius: 1px;
+  opacity: 0.7;
+}
+.barcode-text {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--text-3);
+  letter-spacing: 0.15em;
+}
+
+/* Actions */
+.confirmed-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+.action-btn {
+  flex: 1;
+  padding: 13px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.action-btn.primary {
+  background: var(--gold);
+  color: #0a0a0f;
+  border: none;
+}
+.action-btn.primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+.action-btn.secondary {
+  background: none;
+  color: var(--text-2);
+  border: 1px solid var(--border);
+}
+.action-btn.secondary:hover { border-color: var(--text-2); color: var(--text-1); }
+
+@media print {
+  .navbar, .confirmed-actions { display: none; }
+  .confirmed-page { background: white; }
+  .ticket-card { border: 1px solid #ddd; }
+  .ticket-movie, .confirmed-title { color: #000; }
+}

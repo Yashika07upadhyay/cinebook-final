@@ -1,0 +1,171 @@
+.mybookings-page {
+  min-height: 100vh;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+}
+
+.mybookings-content {
+  max-width: 860px;
+  margin: 32px auto;
+  padding: 0 20px;
+  width: 100%;
+}
+
+.mybookings-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+.mybookings-header h1 {
+  font-size: 38px;
+  color: var(--text-1);
+}
+.back-btn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-2);
+  padding: 9px 18px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  transition: all 0.2s;
+}
+.back-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+.bookings-loading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-2);
+  padding: 40px 0;
+}
+
+.bookings-error {
+  color: var(--red);
+  padding: 20px;
+  background: rgba(232,64,64,0.08);
+  border: 1px solid rgba(232,64,64,0.2);
+  border-radius: var(--radius-md);
+}
+
+.bookings-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-2);
+}
+.empty-icon { font-size: 52px; margin-bottom: 16px; }
+.empty-title { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--text-1); margin-bottom: 6px; }
+.empty-sub { font-size: 14px; }
+
+.bookings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 16px;
+}
+
+.booking-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.booking-item:hover {
+  border-color: rgba(220,160,60,0.25);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+}
+
+.booking-item-header {
+  padding: 18px 20px 14px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(135deg, #12121a 0%, #1a1208 100%);
+}
+.booking-movie {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  color: var(--text-1);
+  letter-spacing: 0.04em;
+}
+.booking-ref {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--text-3);
+  margin-top: 3px;
+}
+.booking-status {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.booking-status.success {
+  background: rgba(46,204,113,0.12);
+  color: var(--green);
+  border: 1px solid rgba(46,204,113,0.25);
+}
+.booking-status.pending {
+  background: rgba(245,197,24,0.1);
+  color: var(--yellow);
+  border: 1px solid rgba(245,197,24,0.2);
+}
+.booking-status.failed {
+  background: rgba(232,64,64,0.1);
+  color: var(--red);
+  border: 1px solid rgba(232,64,64,0.2);
+}
+
+.booking-item-body {
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.booking-detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 13px;
+}
+.bd-label {
+  color: var(--text-3);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  padding-top: 1px;
+}
+.bd-value {
+  color: var(--text-1);
+  text-align: right;
+}
+.bd-value.mono {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  color: var(--gold);
+}
+
+.booking-item-footer {
+  padding: 12px 20px 16px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: flex-end;
+}
+.booking-amount {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  color: var(--gold);
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 500px) {
+  .bookings-grid { grid-template-columns: 1fr; }
+  .mybookings-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+}
